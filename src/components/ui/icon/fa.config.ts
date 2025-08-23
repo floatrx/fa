@@ -1,4 +1,6 @@
-import type { FontAwesomeThemes } from '@/types/components/fa';
+import type { FontAwesomeTheme } from '@/types/components/fa';
+
+export const FA_BROWSE_URL = 'https://fontawesome.com/search?o=r&';
 
 export const FA_ICONS = [
   'fa-0',
@@ -4698,8 +4700,8 @@ export const FA_ICONS = [
 
 export const FA_THEMES = [
   //
-  'fal',
   'far',
+  'fal',
   'fas',
   'fad',
   'fadt',
@@ -4727,7 +4729,7 @@ export const FA_THEMES = [
   'fawsb',
 ] as const;
 
-export const FA_THEME_TITLE_MAP: Record<FontAwesomeThemes, string> = {
+export const FA_THEME_TITLE_MAP: Record<FontAwesomeTheme, string> = {
   fal: 'Light',
   far: 'Regular',
   fas: 'Solid',
@@ -4755,4 +4757,34 @@ export const FA_THEME_TITLE_MAP: Record<FontAwesomeThemes, string> = {
   faslr: 'Slab Regular',
   fatl: 'Thumbprint Light',
   fawsb: 'Whiteboard Light',
+};
+
+export const FA_THEME_IP_MAP: Record<FontAwesomeTheme, string> = {
+  fal: 'light',
+  far: 'regular',
+  fas: 'solid',
+  fad: 'duotone',
+  fab: 'brands',
+  fadt: 'duotone',
+  fadr: 'duotone',
+  fadl: 'duotone',
+  faes: 'etch',
+  facr: 'chisel',
+  fajfr: 'jelly',
+  fajdr: 'jelly',
+  fajr: 'jelly',
+  fands: 'notdog',
+  fans: 'notdog',
+  fasdl: 'sharp',
+  fasdr: 'sharp',
+  fasds: 'sharp',
+  fasdt: 'sharp',
+  fasl: 'sharp',
+  fasr: 'sharp',
+  fass: 'sharp',
+  fast: 'sharp',
+  faslpr: 'slab',
+  faslr: 'slab',
+  fatl: 'thumbprint',
+  fawsb: 'whiteboard',
 };

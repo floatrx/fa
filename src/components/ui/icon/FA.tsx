@@ -1,5 +1,5 @@
 import type { CSSProperties, MouseEventHandler, ReactNode } from 'react';
-import type { FontAwesomeIcon, FontAwesomeThemes } from '@/types/components/fa';
+import type { FontAwesomeIcon, FontAwesomeTheme } from '@/types/components/fa';
 
 import { Tooltip } from 'antd';
 
@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils/cn';
 
 export interface FontAwesomeIconProps {
   className?: string;
-  theme?: FontAwesomeThemes;
+  theme?: FontAwesomeTheme;
   // @see https://fontawesome.com/v5.15/icons?d=gallery
   icon: FontAwesomeIcon;
   color?: string;

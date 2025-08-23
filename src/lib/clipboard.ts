@@ -2,7 +2,8 @@
  * Copy text content to clipboard as plain text
  * @param textContent
  */
-export const copyAsPlainText = (textContent: string) => {
+export const copyAsPlainText = (textContent: string | null | undefined) => {
+  if (!textContent) return;
   navigator.clipboard
     .writeText(textContent)
     .then(() => {
