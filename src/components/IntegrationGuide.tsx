@@ -13,6 +13,17 @@ export const IntegrationGuide: RC = () => {
 
         <ol>
           <li>
+            Clone repo from{' '}
+            <a
+              className="text-primary font-semibold underline"
+              href="https://github.com/floatrx/fa"
+              target="_blank"
+              rel="nofollow noopener"
+            >
+              <FA icon="fa-external-link" theme="fad" text="https://github.com/floatrx/fa" />
+            </a>
+          </li>
+          <li>
             Copy icon fonts <pre>./public/webfonts/fa/*</pre> to your public folder
           </li>
           <li>
