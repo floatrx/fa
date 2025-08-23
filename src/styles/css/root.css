@@ -1,0 +1,15 @@
+:root {
+    @apply bg-background text-foreground;
+    @apply font-sans leading-6 font-normal antialiased;
+
+    color-scheme: light dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    --header-height: 40px;
+}
+
+::selection {
+    background: var(--color-primary-100);
+}

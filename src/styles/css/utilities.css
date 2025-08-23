@@ -1,0 +1,50 @@
+/* Layout */
+/* -- flex stack */
+.stack {
+    @apply flex items-center;
+
+    &:not([class*="gap-"]) {
+        @apply gap-1;
+    }
+}
+
+/* -- grid cards */
+.grid-auto-fill {
+    @apply grid;
+
+    --grid-min: 240px; /* grid-md - as default */
+    --grid-tpl-cols: repeat(auto-fill, minmax(var(--grid-min), 1fr));
+    grid-template-columns: var(--grid-tpl-cols);
+
+    &:not([class*="gap-"]) {
+        @apply gap-5;
+    }
+
+    &.grid-xxs {
+        --grid-min: 115px;
+    }
+    &.grid-xs {
+        --grid-min: 130px;
+    }
+    &.grid-sm {
+        --grid-min: 180px;
+    }
+    &.grid-lg {
+        --grid-min: 280px;
+    }
+    &.grid-xl {
+        --grid-min: 320px;
+    }
+    &.grid-2xl {
+        --grid-min: 400px;
+    }
+}
+/* -- container */
+.container {
+    @apply mx-auto px-4;
+    max-width: 1200px;
+}
+
+.b1 {
+    @apply border border-red-500;
+}

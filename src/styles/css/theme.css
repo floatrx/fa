@@ -1,0 +1,62 @@
+@theme {
+    /* Breakpoints */
+    --breakpoint-xxs: 20rem; /* 320px */
+    --breakpoint-xs: 30rem; /* 480px */
+    --breakpoint-2xl: 100rem; /* 1600px */
+    --breakpoint-3xl: 120rem; /* 1920px */
+    --breakpoint-4xl: 140rem; /* 2240px */
+
+    /* Colors */
+    --color-background: #f6fbff;
+    --color-foreground: #020817;
+
+    --color-primary: #1890ff; /* should be synced with theme.ts */
+    --color-primary-50: hsl(210, 100%, 98%);
+    --color-primary-100: hsl(210, 100%, 90%);
+    --color-primary-200: hsl(210, 100%, 80%);
+    --color-primary-300: hsl(210, 100%, 70%);
+    --color-primary-400: hsl(210, 100%, 60%);
+    --color-primary-500: hsl(210, 100%, 50%);
+    --color-primary-600: hsl(210, 100%, 40%);
+    --color-primary-700: hsl(210, 100%, 30%);
+    --color-primary-800: hsl(210, 100%, 20%);
+    --color-primary-900: hsl(210, 100%, 10%);
+
+    /* Shadows */
+    --shadow-color-rgba: rgba(0, 100, 197, 0.07);
+    --shadow-xs: 0 1px 2px var(--shadow-color-rgba);
+    --shadow-sm: 0 2px 5px var(--shadow-color-rgba);
+    --shadow-md: 0 4px 10px var(--shadow-color-rgba);
+    --shadow-lg: 0 10px 15px var(--shadow-color-rgba);
+    --shadow-xl: 0 20px 25px var(--shadow-color-rgba);
+    --shadow-2xl: 0 25px 50px var(--shadow-color-rgba);
+    --shadow-right: 2px 0 5px var(--shadow-color-rgba);
+
+    --nav-width: 185px;
+
+    --app-font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --font-sans: var(--app-font-family);
+
+    /* Statuses */
+
+    --color-success: #78cd62;
+    --color-danger: #df6060;
+    --color-warning: #ffc53d;
+    --color-error: #df6060;
+    --color-unable: #bec7da;
+    --color-info: #40a9ff;
+    --color-turquoise: #006ba7;
+    --color-muted: #848b92;
+    --color-regal-blue: #243c5a;
+
+    /* Roles */
+    --color-role-admin: var(--color-danger);
+    --color-role-semi-admin: var(--color-warning);
+    --color-role-user: var(--color-info);
+
+    /* Statuses */
+    --color-status-draft: var(--color-warning);
+    --color-status-active: var(--color-success);
+    --color-status-paused: var(--color-muted);
+    --color-status-removed: var(--color-danger);
+}

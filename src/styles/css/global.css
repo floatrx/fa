@@ -1,0 +1,19 @@
+/**
+ * NOTE: Don't reorder layers and first import "tailwindcss".
+ * @see https://ant.design/docs/react/compatible-style#tailwindcss-v4
+ */
+
+@layer theme, base, antd, components, utilities, overrides;
+
+@import "tailwindcss";
+
+@import "./reset.css";
+@import "./root.css";
+@import "./theme.css";
+
+
+@import "./utilities.css" layer(utilities);
+
+body {
+    @apply m-0 min-h-screen min-w-[320px];
+}

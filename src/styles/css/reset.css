@@ -1,0 +1,17 @@
+/* Remove chrome autofill color from inputs */
+input:-webkit-autofill {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+        transition: background-color 5000000s ease-in-out 0s;
+        -webkit-text-fill-color: black !important;
+    }
+}
+
+*:focus,
+*:focus-within {
+    outline: none;
+    border-color: var(--color-slate-100, #fcf9fa);
+    box-shadow: none;
+}

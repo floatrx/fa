@@ -1,0 +1,4 @@
+*.json
+*.yaml
+package.json
+pnpm*
