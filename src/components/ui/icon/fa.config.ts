@@ -4760,9 +4760,9 @@ export const FA_THEME_TITLE_MAP: Record<FontAwesomeTheme, string> = {
 };
 
 export const FA_THEME_IP_MAP: Record<FontAwesomeTheme, string> = {
-  fal: 'light',
-  far: 'regular',
-  fas: 'solid',
+  fal: 'classic',
+  far: 'classic',
+  fas: 'classic',
   fad: 'duotone',
   fab: 'brands',
   fadt: 'duotone',
