@@ -7,7 +7,7 @@ import { FixedSizeGrid as Grid } from 'react-window';
 import { IconFilters } from '@/components/IconFilters';
 import { BadgeCounter } from '@/components/ui/badge/BadgeCounter';
 import { FA } from '@/components/ui/icon/FA';
-import { FA_BROWSE_URL, FA_ICONS, FA_THEME_IP_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
+import { FA_BRAND_ICONS, FA_BROWSE_URL, FA_ICONS, FA_THEME_IP_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
 import { copyAsPlainText } from '@/lib/clipboard';
 
 type Props = {
@@ -26,7 +26,8 @@ export const IconsList: RC<Props> = ({ theme }) => {
   const [activeTheme, setActiveTheme] = useState<FontAwesomeTheme>(theme || FA_THEMES[0]);
   const [search, setSearch] = useState('');
   const deferredSearch = useDeferredValue(search);
-  const filteredIcons = FA_ICONS.filter((icon) => icon.toLowerCase().includes(deferredSearch.toLowerCase()));
+  const icons = activeTheme === 'fab' ? FA_BRAND_ICONS : FA_ICONS;
+  const filteredIcons = icons.filter((icon) => icon.toLowerCase().includes(deferredSearch.toLowerCase())) as FontAwesomeIcon[];
   const resetFilters = () => setSearch('');
 
   // Virtualized grid setup
@@ -86,7 +87,10 @@ export const IconsList: RC<Props> = ({ theme }) => {
           ref={gridRef}
           style={{ width: '100%', height: '70vh' }}
           onClick={(e) => {
-            const icon = `<FA icon="${getIconFromTarget(e)}" theme="${activeTheme}" />`;
+            const icon =
+              activeTheme === 'fab'
+                ? `<FB icon="${getIconFromTarget(e)}" />`
+                : `<FA icon="${getIconFromTarget(e)}" theme="${activeTheme}" />`;
             copyAsPlainText(icon);
             message.destroy('copy-icon');
             return message.open({ content: `${icon} (copied)`, duration: 1.5, key: 'copy-icon', type: 'info' });

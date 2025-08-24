@@ -2,14 +2,20 @@ import { Link } from 'react-router';
 
 import { BadgeCounter } from '@/components/ui/badge/BadgeCounter';
 import { FA } from '@/components/ui/icon/FA';
-import { FA_THEME_TITLE_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
+import { FA_ALL_THEMES,FA_THEME_TITLE_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
+import { FB } from '@/components/ui/icon/FB';
 
 export const IntegrationGuide: RC = () => {
   return (
     <>
       <h1 className="my-2 text-lg font-semibold">Integration guide</h1>
       <div className="guide space-y-2">
-        <p>Fontawesome icons pack is React typesafe solution.</p>
+        <FB
+          className="mb-2 block font-semibold"
+          icon="fa-square-font-awesome"
+          color="primary"
+          text="Fontawesome icons pack is React typesafe solution."
+        />
 
         <ol>
           <li>
@@ -47,12 +53,13 @@ export const IntegrationGuide: RC = () => {
             <pre className="my-2 rounded bg-slate-100 p-2 text-sm">{`<FA icon="fa-home" theme="fas" />`}</pre>
             Refactor component if needed.
           </li>
+          <li>If you don't need brand icons - remove all related code and themes from config, styles and types.</li>
         </ol>
 
         <p className="text-danger inline-block rounded-md border border-pink-100 bg-pink-50 p-2 font-semibold">
           <FA icon="fa-exclamation-circle" theme="fad" text="NOTE:" color="danger" />
-          Some themes do not support the full icon pack and may render default glyphs (e.g. <FA icon="fa-home" theme="fab" />{' '}
-          <FA icon="fa-analytics" theme="fajr" />
+          Some themes do not support the full icon pack (incomplete pack) and may render default glyphs for unavailable icons (e.g.{' '}
+          <FA icon="fa-home" theme="fab" /> <FA icon="fa-analytics" theme="fajr" />
           <FA icon="fa-album-collection-circle-plus" theme="faes" />
           ).
         </p>
@@ -61,10 +68,10 @@ export const IntegrationGuide: RC = () => {
           Available Themes <BadgeCounter count={FA_THEMES.length} />
         </h2>
         <div className="grid-auto-fill grid-xxs flex-wrap gap-4">
-          {FA_THEMES.map((theme) => (
+          {FA_ALL_THEMES.map((theme) => (
             <Link to={`/theme/${theme}`} key={theme} className="inline-block">
               <div className="flex flex-col items-center gap-2 overflow-clip rounded-md border border-slate-200 p-2 text-center leading-1">
-                <FA icon="fa-home" theme={theme} color="primary" />
+                <FA icon={theme === 'fab' ? 'fa-font-awesome-logo-full' : 'fa-home'} theme={theme} color="primary" />
                 <span className="text-xs leading-3 break-all">
                   <span className="font-semibold">{FA_THEME_TITLE_MAP[theme]}</span>
                   <br />({theme})
