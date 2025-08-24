@@ -16,6 +16,15 @@ interface Props {
   search?: string;
 }
 
+/**
+ * Icon filters component
+ * @param search - initial search value
+ * @param onSearch - search change handler
+ * @param theme - selected theme
+ * @param onThemeChange - theme change handler
+ * @param onReset - reset filters handler
+ * @constructor
+ */
 export const IconFilters: FC<Props> = ({ search, onSearch, theme, onThemeChange, onReset }) => {
   const [activeTheme, setActiveTheme] = useState<FontAwesomeTheme>(theme);
 
@@ -29,7 +38,7 @@ export const IconFilters: FC<Props> = ({ search, onSearch, theme, onThemeChange,
   // Performant search with debounce
   const debouncedSearch = useDebounceCallback(handleFilter, 500);
 
-  const selectOptions = FA_THEMES.map((theme) => ({
+  const themeSelectOptions = FA_THEMES.map((theme) => ({
     label: `${FA_THEME_TITLE_MAP[theme]} / ${theme}`,
     value: theme,
   }));
@@ -37,18 +46,20 @@ export const IconFilters: FC<Props> = ({ search, onSearch, theme, onThemeChange,
   return (
     <div className="flex gap-2">
       <Select
-        className="w-full flex-auto"
+        className="w-[300px] flex-auto"
         showSearch
         prefix={<span className="text-primary font-semibold">Theme:</span>}
-        options={selectOptions}
+        options={themeSelectOptions}
         value={activeTheme}
         onChange={handleThemeChange}
         optionFilterProp="label"
         suffixIcon={
+          // Incomplete pack warning icon
           FA_INCOMPLETE_PACKS.includes(theme) && (
             <FA tooltip="Incomplete icon pack" icon="fa-exclamation-triangle" theme="fad" color="danger" text="Incomplete pack" />
           )
         }
+        // Render options with icons
         optionRender={({ value, label }) => (
           <FA icon={value === 'fab' ? 'fa-font-awesome' : 'fa-home'} theme={value as FontAwesomeTheme} color="primary" text={label} />
         )}

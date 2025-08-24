@@ -5,7 +5,13 @@ import { FA } from '@/components/ui/icon/FA';
 import { FA_THEME_TITLE_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
 import { FB } from '@/components/ui/icon/FB';
 
-export const IntegrationGuide: RC = () => {
+/**
+ * Integration guide page
+ * Step by step instructions to integrate FontAwesome icons pack in your project
+ * @see MainRoutes
+ * @constructor
+ */
+export const IntegrationGuidePage: RC = () => {
   return (
     <>
       <h1 className="my-2 text-lg font-semibold">Integration guide</h1>

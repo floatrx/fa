@@ -4,10 +4,10 @@ import { message } from 'antd';
 import { useDeferredValue, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { FixedSizeGrid as Grid } from 'react-window';
 
-import { IconFilters } from '@/components/IconFilters';
 import { BadgeCounter } from '@/components/ui/badge/BadgeCounter';
 import { FA } from '@/components/ui/icon/FA';
 import { FA_BRAND_ICONS, FA_BROWSE_URL, FA_ICONS, FA_THEME_IP_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
+import { IconFilters } from '@/components/views/browser/IconFilters';
 import { copyAsPlainText } from '@/lib/clipboard';
 
 type Props = {
@@ -21,7 +21,14 @@ type GridItemProps = {
   data: { filteredIcons: FontAwesomeIcon[]; activeTheme: FontAwesomeTheme };
 };
 
-export const IconsList: RC<Props> = ({ theme }) => {
+/**
+ * Icons browser page with filters and virtualized grid
+ * @param theme - initial theme filter
+ * @see MainRoutes
+ * @see IconFilters
+ * @constructor
+ */
+export const IconsBrowserPage: RC<Props> = ({ theme }) => {
   // Filters
   const [activeTheme, setActiveTheme] = useState<FontAwesomeTheme>(theme || FA_THEMES[0]);
   const [search, setSearch] = useState('');
