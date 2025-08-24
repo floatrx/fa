@@ -11,6 +11,9 @@
 @import "./root.css";
 @import "./theme.css";
 
+@import "./guide.css";
+@import "./scrollbars.css";
+
 
 @import "./utilities.css" layer(utilities);
 
@@ -18,14 +21,3 @@ body {
     @apply m-0 min-h-screen min-w-[320px];
 }
 
-.guide {
-    @apply space-y-2;
-
-    ol {
-        @apply list-decimal list-inside;
-    }
-
-    pre {
-        @apply inline bg-pink-50 font-semibold text-pink-500 rounded p-2 text-sm;
-    }
-}

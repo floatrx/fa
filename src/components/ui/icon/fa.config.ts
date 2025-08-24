@@ -1107,7 +1107,6 @@ export const FA_ICONS = [
   'fa-clapperboard',
   'fa-clapperboard-play',
   'fa-clarinet',
-  'fa-classic',
   'fa-claw-marks',
   'fa-clinic-medical',
   'fa-clipboard',

@@ -52,7 +52,8 @@ export const IntegrationGuide: RC = () => {
         <p className="text-danger inline-block rounded-md border border-pink-100 bg-pink-50 p-2 font-semibold">
           <FA icon="fa-exclamation-circle" theme="fad" text="NOTE:" color="danger" />
           Some themes do not support the full icon pack and may render default glyphs (e.g. <FA icon="fa-home" theme="fab" />{' '}
-          <FA icon="fa-home" theme="fajr" />
+          <FA icon="fa-analytics" theme="fajr" />
+          <FA icon="fa-album-collection-circle-plus" theme="faes" />
           ).
         </p>
 

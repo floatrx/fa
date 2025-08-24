@@ -1,9 +1,10 @@
 import type { FontAwesomeIcon, FontAwesomeTheme } from '@/types/components/fa';
 
+import { message } from 'antd';
 import { useDeferredValue, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { FixedSizeGrid as Grid } from 'react-window';
 
-import { IconsBrowser } from '@/components/IconsBrowser';
+import { IconFilters } from '@/components/IconFilters';
 import { BadgeCounter } from '@/components/ui/badge/BadgeCounter';
 import { FA } from '@/components/ui/icon/FA';
 import { FA_BROWSE_URL, FA_ICONS, FA_THEME_IP_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
@@ -21,40 +22,42 @@ type GridItemProps = {
 };
 
 export const IconsList: RC<Props> = ({ theme }) => {
+  // Filters
   const [activeTheme, setActiveTheme] = useState<FontAwesomeTheme>(theme || FA_THEMES[0]);
   const [search, setSearch] = useState('');
   const deferredSearch = useDeferredValue(search);
   const filteredIcons = FA_ICONS.filter((icon) => icon.toLowerCase().includes(deferredSearch.toLowerCase()));
+  const resetFilters = () => setSearch('');
 
-  const resetFilters = () => {
-    setSearch('');
-  };
-
+  // Virtualized grid setup
   const gridRef = useRef<HTMLDivElement>(null);
   const [gridWidth, setGridWidth] = useState(0);
   const ICON_SIZE = 80; // px
   const GAP = 8; // px
+  const columnCount = Math.max(1, Math.floor(gridWidth / (ICON_SIZE + GAP)));
+  const rowCount = Math.ceil(filteredIcons.length / columnCount);
 
+  // Handle grid width on resize
   useLayoutEffect(() => {
     function updateWidth() {
-      if (gridRef.current) {
-        setGridWidth(gridRef.current.offsetWidth);
-      }
+      if (!gridRef.current) return;
+      setGridWidth(gridRef.current.offsetWidth);
     }
     updateWidth();
     window.addEventListener('resize', updateWidth);
+
+    // Cleanup event listener on unmount
     return () => window.removeEventListener('resize', updateWidth);
   }, []);
 
+  // Sync with prop (if changed)
   useEffect(() => {
     if (theme && FA_THEMES.includes(theme)) {
       setActiveTheme(theme);
     }
   }, [theme]);
 
-  const columnCount = Math.max(1, Math.floor(gridWidth / (ICON_SIZE + GAP)));
-  const rowCount = Math.ceil(filteredIcons.length / columnCount);
-
+  // Get icon name from clicked target (event delegation)
   const getIconFromTarget = (e: React.MouseEvent): string | null => {
     // Use event delegation to find the closest element with data-icon
     const target = e.target as HTMLDivElement;
@@ -65,7 +68,7 @@ export const IconsList: RC<Props> = ({ theme }) => {
 
   return (
     <>
-      <IconsBrowser onThemeChange={setActiveTheme} theme={activeTheme} onSearch={setSearch} search={search} onReset={resetFilters} />
+      <IconFilters onThemeChange={setActiveTheme} theme={activeTheme} onSearch={setSearch} search={search} onReset={resetFilters} />
 
       <div key={activeTheme} className="text-2xl">
         <h2 className="mb-4 text-lg font-semibold">
@@ -74,11 +77,19 @@ export const IconsList: RC<Props> = ({ theme }) => {
         <p className="my-2 text-xs text-slate-500">
           Click on an icon to copy its name to clipboard. Double click to open it on FontAwesome.com.
         </p>
+
+        {/*
+         * Virtualized list (grid)
+         * for performance with large number of icons
+         */}
         <div
           ref={gridRef}
           style={{ width: '100%', height: '70vh' }}
           onClick={(e) => {
-            copyAsPlainText(getIconFromTarget(e));
+            const icon = `<FA icon="${getIconFromTarget(e)}" theme="${activeTheme}" />`;
+            copyAsPlainText(icon);
+            message.destroy('copy-icon');
+            return message.open({ content: `${icon} (copied)`, duration: 1.5, key: 'copy-icon', type: 'info' });
           }}
           onDoubleClick={(e) => {
             const icon = getIconFromTarget(e);
@@ -96,6 +107,7 @@ export const IconsList: RC<Props> = ({ theme }) => {
               width={gridWidth}
               height={window.innerHeight * 0.8}
               itemData={{ filteredIcons, activeTheme }}
+              className="fancy-scrollbar"
               style={{ overflowX: 'hidden' }}
             >
               {({ columnIndex, rowIndex, style, data }: GridItemProps) => {

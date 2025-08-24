@@ -15,7 +15,7 @@ interface Props {
   search?: string;
 }
 
-export const IconsBrowser: FC<Props> = ({ search, onSearch, theme, onThemeChange, onReset }) => {
+export const IconFilters: FC<Props> = ({ search, onSearch, theme, onThemeChange, onReset }) => {
   const [activeTheme, setActiveTheme] = useState<FontAwesomeTheme>(theme);
 
   const handleThemeChange = (value: FontAwesomeTheme) => {

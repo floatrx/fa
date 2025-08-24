@@ -1,0 +1,11 @@
+.guide {
+    @apply space-y-2;
+
+    ol {
+        @apply list-decimal list-inside;
+    }
+
+    pre {
+        @apply inline bg-pink-50 font-semibold text-pink-500 rounded p-2 text-sm;
+    }
+}
