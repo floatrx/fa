@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 
 import { BadgeCounter } from '@/components/ui/badge/BadgeCounter';
 import { FA } from '@/components/ui/icon/FA';
-import { FA_ALL_THEMES,FA_THEME_TITLE_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
+import { FA_THEME_TITLE_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
 import { FB } from '@/components/ui/icon/FB';
 
 export const IntegrationGuide: RC = () => {
@@ -68,7 +68,7 @@ export const IntegrationGuide: RC = () => {
           Available Themes <BadgeCounter count={FA_THEMES.length} />
         </h2>
         <div className="grid-auto-fill grid-xxs flex-wrap gap-4">
-          {FA_ALL_THEMES.map((theme) => (
+          {FA_THEMES.map((theme) => (
             <Link to={`/theme/${theme}`} key={theme} className="inline-block">
               <div className="flex flex-col items-center gap-2 overflow-clip rounded-md border border-slate-200 p-2 text-center leading-1">
                 <FA icon={theme === 'fab' ? 'fa-font-awesome-logo-full' : 'fa-home'} theme={theme} color="primary" />

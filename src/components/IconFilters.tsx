@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useDebounceCallback } from 'usehooks-ts';
 
 import { FA } from '@/components/ui/icon/FA';
-import { FA_ALL_THEMES, FA_INCOMPLETE_PACKS, FA_THEME_TITLE_MAP } from '@/components/ui/icon/fa.config';
+import { FA_INCOMPLETE_PACKS, FA_THEME_TITLE_MAP, FA_THEMES } from '@/components/ui/icon/fa.config';
 
 interface Props {
   theme: FontAwesomeTheme;
@@ -29,7 +29,7 @@ export const IconFilters: FC<Props> = ({ search, onSearch, theme, onThemeChange,
   // Performant search with debounce
   const debouncedSearch = useDebounceCallback(handleFilter, 500);
 
-  const selectOptions = FA_ALL_THEMES.map((theme) => ({
+  const selectOptions = FA_THEMES.map((theme) => ({
     label: `${FA_THEME_TITLE_MAP[theme]} / ${theme}`,
     value: theme,
   }));

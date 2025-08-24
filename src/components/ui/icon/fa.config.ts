@@ -5341,8 +5341,6 @@ export const FA_THEME_IP_MAP: Record<FontAwesomeTheme, string> = {
   fawsb: 'whiteboard',
 };
 
-export const FA_ALL_THEMES: FontAwesomeTheme[] = [...FA_THEMES, ...FA_BRAND_THEMES] as const;
-
 // Note: these packs are incomplete and missing icons compared to others
 export const FA_INCOMPLETE_PACKS: FontAwesomeTheme[] = [
   'fawsb',

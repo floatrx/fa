@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router';
 import { IconsList } from '@/components/IconsList';
 import { IntegrationGuide } from '@/components/IntegrationGuide';
 import { MainLayout } from '@/components/layout/MainLayout';
-import { FA_ALL_THEMES } from '@/components/ui/icon/fa.config';
+import { FA_THEMES } from '@/components/ui/icon/fa.config';
 
 export function App() {
   return (
@@ -13,7 +13,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<IconsList />} />
         <Route path="/guide" element={<IntegrationGuide />} />
-        {FA_ALL_THEMES.map((theme: FontAwesomeTheme) => (
+        {FA_THEMES.map((theme: FontAwesomeTheme) => (
           <Route key={theme} path={`/theme/${theme}`} element={<IconsList key={theme} theme={theme} />} />
         ))}
       </Routes>
