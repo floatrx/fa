@@ -14,7 +14,6 @@ export function App() {
         <Route path="/" element={<IconsList />} />
         <Route path="/guide" element={<IntegrationGuide />} />
         {FA_THEMES.map((theme: FontAwesomeTheme) => {
-          console.log('theme: >>', theme);
           return <Route key={theme} path={`/theme/${theme}`} element={<IconsList key={theme} theme={theme} />} />;
         })}
       </Routes>
