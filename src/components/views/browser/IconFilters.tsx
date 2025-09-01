@@ -39,14 +39,13 @@ export const IconFilters: FC<Props> = ({ search, onSearch, theme, onThemeChange,
   const debouncedSearch = useDebounceCallback(handleFilter, 500);
 
   const themeSelectOptions = FA_THEMES.map((theme) => ({
-    label: `${FA_THEME_TITLE_MAP[theme]} / ${theme}`,
+    label: `${FA_THEME_TITLE_MAP[theme]}`,
     value: theme,
   }));
 
   return (
-    <div className="flex gap-2">
+    <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-[1fr_2fr]">
       <Select
-        className="xs:w-[100%] max-w-[365px] flex-auto"
         showSearch
         prefix={<span className="text-primary xs:block hidden font-semibold">Theme:</span>}
         options={themeSelectOptions}
@@ -56,7 +55,10 @@ export const IconFilters: FC<Props> = ({ search, onSearch, theme, onThemeChange,
         suffixIcon={
           // Incomplete pack warning icon
           FA_INCOMPLETE_PACKS.includes(theme) && (
-            <FA tooltip="Incomplete icon pack" icon="fa-exclamation-triangle" theme="fad" color="danger" text="Incomplete pack" />
+            <>
+              <FA tooltip="Incomplete icon pack" icon="fa-exclamation-triangle" theme="fad" color="danger" />
+              <span className="hidden md:block">Incomplete pack</span>
+            </>
           )
         }
         // Render options with icons
