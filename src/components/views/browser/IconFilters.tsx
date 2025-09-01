@@ -46,9 +46,9 @@ export const IconFilters: FC<Props> = ({ search, onSearch, theme, onThemeChange,
   return (
     <div className="flex gap-2">
       <Select
-        className="w-[300px] flex-auto"
+        className="xs:w-[100%] max-w-[365px] flex-auto"
         showSearch
-        prefix={<span className="text-primary font-semibold">Theme:</span>}
+        prefix={<span className="text-primary xs:block hidden font-semibold">Theme:</span>}
         options={themeSelectOptions}
         value={activeTheme}
         onChange={handleThemeChange}
